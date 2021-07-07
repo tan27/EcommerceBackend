@@ -14,6 +14,7 @@ app.use(cors());
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(bodyParser.json());
 
+
 const uri = process.env.CONNECTIONSTRING;
 mongoose.connect(uri, { useNewUrlParser: true, useUnifiedTopology: true } )
 .then(() => console.log('Now connected to MongoDB!'))
@@ -44,8 +45,8 @@ app.post('/register', async (req, res) => {
           });
           const salt = await bcrypt.genSalt(10);
           user.password = await bcrypt.hash(user.password, salt);
-          await user.save();
-          res.json('success');
+          user.save();
+          res.json(user);
       }
     });
 
@@ -61,7 +62,6 @@ app.post('/signin', async (req, res) => {
 });
 
 
-
 app.put('/image', (req, res) => {
   User.findOneAndUpdate({ id: req.body.id }, {$inc: {quantity: 1}});
   return res.json(quantity[0]);
@@ -69,12 +69,12 @@ app.put('/image', (req, res) => {
 
 app.get('/profile/:id', (req, res) => {
   User.findOne({id: req.body.id})
-  return res.json(user[0]);
+  return res.json(user);
 })
 
 
 app.listen(3001, () => {
-      console.log('app is connected')
+      console.log('app is connected on port 3001')
    });
 
 
