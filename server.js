@@ -72,7 +72,7 @@ app.get('/profile/:id', (req, res) => {
 })
 
 
-app.listen(3001, () => {
-      console.log('app is connected on port 3001')
-   });
+app.listen( process.env.PORT || 3001) = () => {
+      console.log(`app is connected on port ${PORT}`)
+   };
 
