@@ -5,7 +5,7 @@ dotenv.config()
 // import pkg from 'mongodb';
 // const { MongoClient } = pkg; 
 import mongoose from 'mongoose';
-import bcrypt from 'bcrypt';
+import bcrypt from 'bcryptjs';
 import bodyParser from 'body-parser';
 
 const app = express();
