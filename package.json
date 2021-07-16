@@ -4,6 +4,10 @@
   "type": "module",
   "description": "",
   "main": "script.js",
+  "engines": {
+    "node": "14.x",
+    "npm": "6.x"
+  },
   "scripts": {
     "start": "node server.js",
     "start:dev": "nodemon server.js",
